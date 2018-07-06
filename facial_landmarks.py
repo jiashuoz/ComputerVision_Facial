@@ -1,4 +1,6 @@
 # import the necessary packages
+import time
+
 from imutils import face_utils
 import numpy as np
 import argparse
@@ -51,19 +53,22 @@ def run():
         ret, frame = cap.read()
 
         # convert the captured image to grayscale
-        frame = imutils.resize(frame, width=400)
+        frame = imutils.resize(frame, width=500)
         # Our operations on the frame come here
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-
+        start = time.time()
         # detect faces in the grayscale image
         rects = detector(gray, 1)
+        print('Face     : ' + str(time.time() - start))
 
         # loop over the face detections
         for (i, rect) in enumerate(rects):
             # determine the facial landmarks for the face region, then
             # convert the facial landmark (x, y)-coordinates to a NumPy
             # array
+            start = time.time()
             shape = predictor(gray, rect)
+            print('Landmarks: ' + str(time.time() - start))
             shape = face_utils.shape_to_np(shape)
 
             # convert dlib's rectangle to a OpenCV-style bounding box

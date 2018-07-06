@@ -1,6 +1,7 @@
 .idea/
-pic/
+img/
 predictor/
+MobileNetSSD/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

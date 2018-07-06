@@ -16,7 +16,7 @@ cap = cv2.VideoCapture(0)
 while True:
     ret, frame = cap.read()
 
-    frame = imutils.resize(frame, width=500)
+    frame = imutils.resize(frame, width=400)
 
     gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
